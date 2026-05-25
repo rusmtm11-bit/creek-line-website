@@ -37,7 +37,7 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* ===== Вращающееся фоновое изображение (круглое) ===== */
+/* ===== Вращающееся фоновое изображение (круглое, скорость увеличена) ===== */
 body::after {
   content: "";
   position: fixed;
@@ -46,12 +46,12 @@ body::after {
   transform: translateY(-50%);
   width: 30vw;
   height: 30vw;
-  border-radius: 50%;                    /* делает блок идеально круглым */
+  border-radius: 50%;
   background: url('../images/background.jpg') no-repeat center center;
-  background-size: cover;                /* заполняет круг картинкой без зазоров */
+  background-size: cover;
   opacity: 0.08;
   z-index: -1;
-  animation: spin 80s linear infinite;
+  animation: spin 50s linear infinite;  /* Было 80s, стало 50s — вращение быстрее */
   pointer-events: none;
 }
 
