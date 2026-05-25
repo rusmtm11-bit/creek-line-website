@@ -3,82 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Creek Line Limited | Global Commodity Trading</title>
+    <title>Creek Line Limited | Global Commodity Trading, Oil, Gas & Minerals</title>
     <meta name="description" content="Creek Line Limited is an international commodity trading company originating in Hong Kong, specializing in Oil & Gas, Metals, Minerals, and global procurement solutions.">
-    <meta name="keywords" content="commodity trading, oil trading, metals, minerals, procurement, Hong Kong">
+    <meta name="keywords" content="commodity trading, oil trading, metals, minerals, procurement, Hong Kong, energy">
     <meta name="robots" content="index, follow">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">
-                    <a href="index.html">
-                        <img src="images/logo.jpg" alt="Creek Line Limited Logo">
-                        <span class="logo-text">CREEK LINE</span>
-                    </a>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-                <div class="burger">
-                    <span></span><span></span><span></span>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <div class="container">
-            <div class="hero" style="text-align: center; padding: 4rem 0;">
-                <h1>Creek Line Limited</h1>
-                <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto 2rem; color: #cbd5e1;">International commodity trading company originating in Hong Kong, specializing in Oil & Gas, Metals, Minerals, and global procurement solutions.</p>
-                <a href="contact.html" class="btn-primary">Partner with us</a>
+    <div id="bg-canvas"></div>
+    <div class="content-wrapper">
+        <header>
+            <div class="container">
+                <nav>
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="images/logo.png" alt="Creek Line Limited Logo">
+                            <span class="logo-text">CREEK LINE</span>
+                        </a>
+                    </div>
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                    <div class="burger">
+                        <span></span><span></span><span></span>
+                    </div>
+                </nav>
             </div>
+        </header>
 
-            <section class="section">
-                <h2>Core Business Areas</h2>
-                <div class="cards-grid">
-                    <div class="card">
-                        <h3>Oil & Gas Trading</h3>
-                        <p>International trading and supply of petroleum products, fuel solutions, and energy commodities.</p>
-                    </div>
-                    <div class="card">
-                        <h3>Metals & Minerals</h3>
-                        <p>Supply and procurement of industrial metals, raw materials, and mineral products for global industries.</p>
-                    </div>
-                    <div class="card">
-                        <h3>Logistics & Operations</h3>
-                        <p>Integrated logistics support, cargo coordination, and international trade operations management.</p>
-                    </div>
+        <main>
+            <div class="container">
+                <div class="hero" style="text-align: center; padding: 6rem 0 4rem;">
+                    <h1>Creek Line Limited</h1>
+                    <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto 2rem; color: #cbd5e1;">International commodity trading company originating in Hong Kong, specializing in Oil & Gas, Metals, Minerals, and global procurement solutions.</p>
+                    <a href="contact.html" class="btn-primary">Partner with us</a>
                 </div>
-            </section>
 
-            <section class="section">
-                <h2>Why Partner With Us</h2>
-                <div class="benefits-grid">
-                    <div class="benefit-item">International trading expertise</div>
-                    <div class="benefit-item">Reliable global supplier network</div>
-                    <div class="benefit-item">Efficient operational coordination</div>
-                    <div class="benefit-item">Commitment to compliance standards</div>
-                    <div class="benefit-item">Long-term business approach</div>
-                    <div class="benefit-item">Flexible and market-driven solutions</div>
-                </div>
-            </section>
-        </div>
-    </main>
+                <section class="section">
+                    <h2>Core Business Areas</h2>
+                    <div class="cards-grid">
+                        <div class="card">
+                            <h3>Oil & Gas Trading</h3>
+                            <p>International trading and supply of petroleum products, fuel solutions, and energy commodities.</p>
+                        </div>
+                        <div class="card">
+                            <h3>Metals & Minerals</h3>
+                            <p>Supply and procurement of industrial metals, raw materials, and mineral products for global industries.</p>
+                        </div>
+                        <div class="card">
+                            <h3>Logistics & Operations</h3>
+                            <p>Integrated logistics support, cargo coordination, and international trade operations management.</p>
+                        </div>
+                    </div>
+                </section>
 
-    <footer>
-        <div class="container">
-            <p>© 2025 Creek Line Limited. All rights reserved.</p>
-        </div>
-    </footer>
+                <section class="section">
+                    <h2>Why Partner With Us</h2>
+                    <div class="benefits-grid">
+                        <div class="benefit-item">International trading expertise</div>
+                        <div class="benefit-item">Reliable global supplier network</div>
+                        <div class="benefit-item">Efficient operational coordination</div>
+                        <div class="benefit-item">Commitment to compliance standards</div>
+                        <div class="benefit-item">Long-term business approach</div>
+                        <div class="benefit-item">Flexible and market-driven solutions</div>
+                    </div>
+                </section>
+            </div>
+        </main>
 
+        <footer>
+            <div class="container">
+                <p>© 2025 Creek Line Limited. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.128.0/build/three.module.js"
+            }
+        }
+    </script>
+    <script type="module" src="js/three-background.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
