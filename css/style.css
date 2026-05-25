@@ -37,7 +37,7 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* ===== Фоновый логотип-водяной знак на всём сайте ===== */
+/* ===== Фоновый логотип-водяной знак на всём сайте (справа) ===== */
 body::before {
   content: "";
   position: fixed;
@@ -48,7 +48,7 @@ body::before {
   height: 35vw;
   background: url('../images/logo.jpg') no-repeat center center;
   background-size: contain;
-  opacity: 0.06;
+  opacity: 0.04;
   filter: brightness(0) invert(1);
   z-index: 0;
   pointer-events: none;
@@ -126,30 +126,13 @@ body::before {
   width: 100%;
 }
 
-/* ===== Герой секция с логотипом на фоне ===== */
+/* ===== Герой секция ===== */
 .hero {
   padding: 6rem 0 5rem;
   text-align: center;
   background: linear-gradient(180deg, rgba(10,37,64,0.03) 0%, rgba(255,255,255,0) 100%);
   position: relative;
   overflow: hidden;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  max-width: 600px;
-  height: 80%;
-  background: url('../images/logo.jpg') no-repeat center center;
-  background-size: contain;
-  opacity: 0.12;
-  filter: brightness(0) invert(1);
-  z-index: 0;
-  pointer-events: none;
 }
 
 .hero h1 {
@@ -162,8 +145,6 @@ body::before {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradientShift 6s ease infinite;
-  position: relative;
-  z-index: 1;
 }
 
 .hero p {
@@ -171,14 +152,43 @@ body::before {
   color: var(--text-light);
   max-width: 600px;
   margin: 0 auto 2rem;
-  position: relative;
-  z-index: 1;
 }
 
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+
+/* ===== Стили для логотипа в герой-секции ===== */
+.hero-logo {
+  flex: 0 0 auto;
+  max-width: 350px;
+  width: 100%;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  background: white;
+  transition: transform 0.3s ease;
+}
+
+.hero-logo:hover {
+  transform: scale(1.02);
+}
+
+.hero-logo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0.95;
+  animation: hueShift 6s ease infinite;
+}
+
+/* Анимация перелива оттенка, похожая на градиент текста */
+@keyframes hueShift {
+  0% { filter: hue-rotate(0deg) brightness(1); }
+  50% { filter: hue-rotate(8deg) brightness(1.05); }
+  100% { filter: hue-rotate(0deg) brightness(1); }
 }
 
 .btn {
@@ -191,8 +201,6 @@ body::before {
   cursor: pointer;
   border: none;
   font-size: 1rem;
-  position: relative;
-  z-index: 1;
 }
 
 .btn-primary {
@@ -209,7 +217,7 @@ body::before {
   transform: translateY(-2px);
 }
 
-/* ===== Карточки с hover-изображением (единый стиль для всех) ===== */
+/* ===== Карточки с hover-изображением ===== */
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -389,5 +397,10 @@ body::before {
     width: 50vw;
     height: 50vw;
     opacity: 0.04;
+  }
+
+  .hero-logo {
+    max-width: 250px;
+    margin: 0 auto 2rem;
   }
 }
