@@ -1,5 +1,6 @@
-// Мобильное меню
+// Ждем полной загрузки DOM
 document.addEventListener('DOMContentLoaded', () => {
+    // --- Мобильное меню ---
     const burger = document.querySelector('.burger');
     const navLinks = document.querySelector('.nav-links');
     
@@ -17,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Активная ссылка в навигации
+    // Подсветка активной ссылки в навигации
     const currentPath = window.location.pathname.split('/').pop() || 'index.html';
     links.forEach(link => {
         const href = link.getAttribute('href');
@@ -28,21 +29,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Обработка отправки контактной формы
+    // --- Обработка отправки контактной формы ---
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Собираем данные
+            // Имитация отправки данных (можно заменить на реальный запрос к бэкенду)
             const formData = new FormData(contactForm);
             const data = Object.fromEntries(formData.entries());
-            
-            // Здесь можно добавить отправку данных на ваш email или в CRM
             console.log('Form submitted:', data);
             
-            // Показываем уведомление
-            alert('Thank you for your message! We will get back to you soon.');
+            // Показываем пользователю сообщение об успехе
+            alert('Thank you! Your message has been sent. We will contact you shortly.');
             contactForm.reset();
         });
     }
