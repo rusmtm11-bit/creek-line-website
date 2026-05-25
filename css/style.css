@@ -144,9 +144,10 @@ body::before {
   width: 80%;
   max-width: 600px;
   height: 80%;
-  background: url('images/logo.jpg') no-repeat center center;
+  background: url('../images/logo.jpg') no-repeat center center;
   background-size: contain;
-  opacity: 0.08;
+  opacity: 0.12;
+  filter: brightness(0) invert(1);
   z-index: 0;
   pointer-events: none;
 }
@@ -161,6 +162,8 @@ body::before {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradientShift 6s ease infinite;
+  position: relative;
+  z-index: 1;
 }
 
 .hero p {
@@ -168,6 +171,8 @@ body::before {
   color: var(--text-light);
   max-width: 600px;
   margin: 0 auto 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 @keyframes gradientShift {
@@ -186,6 +191,8 @@ body::before {
   cursor: pointer;
   border: none;
   font-size: 1rem;
+  position: relative;
+  z-index: 1;
 }
 
 .btn-primary {
@@ -243,7 +250,7 @@ body::before {
 .card:hover .card-bg {
   opacity: 0.5;
   transform: scale(1);
-  background-color: rgba(0, 163, 255, 0.12); /* голубая подсветка, если нет своей картинки */
+  background-color: rgba(0, 163, 255, 0.12);
 }
 
 .card-content {
