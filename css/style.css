@@ -37,27 +37,29 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* ===== Вращающийся фоновый рисунок (мельница) ===== */
+/* ===== Вращающееся фоновое изображение (справа, не на весь экран) ===== */
 body::after {
   content: "";
   position: fixed;
-  top: -25%;
-  left: -25%;
-  width: 150%;
-  height: 150%;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 30vw;
+  height: 30vw;
   background: url('../images/background.jpg') no-repeat center center;
-  background-size: cover;
-  opacity: 0.1;               /* лёгкая прозрачность, чтобы не заглушать контент */
+  background-size: contain;
+  opacity: 0.08;
   z-index: -1;
   animation: spin 80s linear infinite;
   pointer-events: none;
 }
 
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from { transform: translateY(-50%) rotate(0deg); }
+  to { transform: translateY(-50%) rotate(360deg); }
 }
 
+/* ===== Контейнер ===== */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -399,5 +401,9 @@ body::after {
   .hero-logo {
     max-width: 250px;
     margin: 0 auto 2rem;
+  }
+
+  body::after {
+    display: none;               /* На мобильных скрываем вращающийся фон */
   }
 }
