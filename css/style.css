@@ -118,7 +118,7 @@ body::before {
   width: 100%;
 }
 
-/* ===== Герой секция (главная) ===== */
+/* ===== Герой секция ===== */
 .hero {
   padding: 6rem 0 5rem;
   text-align: center;
@@ -239,7 +239,7 @@ body::before {
   color: var(--text-light);
 }
 
-/* ===== Остальные общие секции ===== */
+/* ===== Секции ===== */
 .section {
   padding: 5rem 0;
 }
@@ -249,12 +249,14 @@ body::before {
   font-weight: 700;
   margin-bottom: 1rem;
   color: var(--accent-dark);
+  text-align: center;
 }
 
 .section-subtitle {
   font-size: 1.2rem;
   color: var(--text-light);
   margin-bottom: 3rem;
+  text-align: center;
 }
 
 /* ===== Контактная форма ===== */
@@ -306,7 +308,6 @@ body::before {
   color: var(--accent-bright);
 }
 
-/* placeholder должен быть прозрачным, чтобы лейбл работал */
 .form-group input::placeholder,
 .form-group textarea::placeholder {
   color: transparent;
