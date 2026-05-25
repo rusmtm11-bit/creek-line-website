@@ -37,21 +37,25 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* ===== Фоновый логотип-водяной знак на всём сайте (справа) ===== */
-body::before {
+/* ===== Вращающийся фоновый рисунок (мельница) ===== */
+body::after {
   content: "";
   position: fixed;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  width: 35vw;
-  height: 35vw;
-  background: url('../images/logo.jpg') no-repeat center center;
-  background-size: contain;
-  opacity: 0.04;
-  filter: brightness(0) invert(1);
-  z-index: 0;
+  top: -25%;
+  left: -25%;
+  width: 150%;
+  height: 150%;
+  background: url('../images/background.jpg') no-repeat center center;
+  background-size: cover;
+  opacity: 0.1;               /* лёгкая прозрачность, чтобы не заглушать контент */
+  z-index: -1;
+  animation: spin 80s linear infinite;
   pointer-events: none;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .container {
@@ -184,7 +188,6 @@ body::before {
   animation: hueShift 6s ease infinite;
 }
 
-/* Анимация перелива оттенка, похожая на градиент текста */
 @keyframes hueShift {
   0% { filter: hue-rotate(0deg) brightness(1); }
   50% { filter: hue-rotate(8deg) brightness(1.05); }
@@ -391,12 +394,6 @@ body::before {
 
   .hero h1 {
     font-size: 2.5rem;
-  }
-
-  body::before {
-    width: 50vw;
-    height: 50vw;
-    opacity: 0.04;
   }
 
   .hero-logo {
