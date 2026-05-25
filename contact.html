@@ -30,14 +30,11 @@
         <p style="color: var(--text-light);">We aim to respond within 24 hours.</p>
       </div>
 
-      <!-- Форма использует FormSubmit для отправки на почту -->
+      <!-- Форма с отправкой на почту через FormSubmit и переходом на страницу "Спасибо" -->
       <form class="contact-form" action="https://formsubmit.co/info@creek-line.com" method="POST">
-        <!-- Защита от спама и настройка -->
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
-        <!-- Можно добавить страницу "спасибо", если нужно
-        <input type="hidden" name="_next" value="https://your-site.com/thank-you.html">
-        -->
+        <input type="hidden" name="_next" value="thankyou.html">
 
         <div class="form-group">
           <input type="text" id="name" name="name" placeholder=" " required>
