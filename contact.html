@@ -30,21 +30,29 @@
         <p style="color: var(--text-light);">We aim to respond within 24 hours.</p>
       </div>
 
-      <form class="contact-form" action="#" method="POST">
+      <!-- Форма использует FormSubmit для отправки на почту -->
+      <form class="contact-form" action="https://formsubmit.co/info@creek-line.com" method="POST">
+        <!-- Защита от спама и настройка -->
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <!-- Можно добавить страницу "спасибо", если нужно
+        <input type="hidden" name="_next" value="https://your-site.com/thank-you.html">
+        -->
+
         <div class="form-group">
-          <input type="text" id="name" placeholder=" " required>
+          <input type="text" id="name" name="name" placeholder=" " required>
           <label for="name">Full Name</label>
         </div>
         <div class="form-group">
-          <input type="email" id="email" placeholder=" " required>
+          <input type="email" id="email" name="email" placeholder=" " required>
           <label for="email">Email Address</label>
         </div>
         <div class="form-group">
-          <input type="text" id="subject" placeholder=" " required>
+          <input type="text" id="subject" name="subject" placeholder=" " required>
           <label for="subject">Subject</label>
         </div>
         <div class="form-group">
-          <textarea id="message" placeholder=" " required></textarea>
+          <textarea id="message" name="message" placeholder=" " required></textarea>
           <label for="message">Your Message</label>
         </div>
         <button type="submit" class="btn btn-primary btn-submit">Send Message</button>
