@@ -1,366 +1,356 @@
-/* ===== RESET & BASE ===== */
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
-
+/* ===== Базовые переменные ===== */
 :root {
-    --primary-dark: #0a1128;
-    --primary-blue: #0f2b5e;
-    --accent-blue: #3b82f6;
-    --accent-cyan: #06b6d4;
-    --text-light: #e2e8f0;
-    --text-lighter: #f8fafc;
-    --glass-bg: rgba(15, 23, 42, 0.6);
-    --glass-border: rgba(59, 130, 246, 0.3);
-    --transition-default: all 0.3s ease;
+  --bg: #ffffff;
+  --text: #1e1e1e;
+  --text-light: #555;
+  --accent-dark: #0A2540;
+  --accent-bright: #00A3FF;
+  --gradient: linear-gradient(120deg, #0A2540, #004E89, #00A3FF, #004E89, #0A2540);
+  --shadow-sm: 0 4px 12px rgba(0,0,0,0.04);
+  --shadow-md: 0 10px 30px rgba(0,0,0,0.06);
+  --shadow-lg: 0 20px 50px rgba(0,0,0,0.08);
+  --radius: 16px;
+  --transition: 0.3s ease;
 }
 
+/* ===== Сброс и шрифты ===== */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Manrope', sans-serif;
-    color: var(--text-light);
-    line-height: 1.5;
-    background-color: var(--primary-dark);
-    overflow-x: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
 }
 
-/* Canvas для Three.js фона */
-#bg-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    display: block;
-}
-
-/* Контент поверх канваса */
-.content-wrapper {
-    position: relative;
-    z-index: 2;
+/* ===== Фоновый логотип-водяной знак ===== */
+body::before {
+  content: "";
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 35vw;
+  height: 35vw;
+  background: url('../images/logo.jpg') no-repeat center center;
+  background-size: contain;
+  opacity: 0.06;
+  filter: brightness(0) invert(1);
+  z-index: 0;
+  pointer-events: none;
 }
 
 .container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
 }
 
-/* ===== TYPOGRAPHY ===== */
-h1, h2, h3 {
-    font-weight: 700;
-    letter-spacing: -0.02em;
+/* ===== Навигация ===== */
+.navbar {
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  padding: 1.2rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
-h1 {
-    font-size: 4rem;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-    background: linear-gradient(135deg, var(--text-lighter) 0%, var(--accent-cyan) 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-}
-
-@media (max-width: 768px) {
-    h1 { font-size: 2.5rem; }
-    h2 { font-size: 2rem; }
-}
-
-h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: var(--text-lighter);
-    border-left: 5px solid var(--accent-blue);
-    padding-left: 1rem;
-}
-
-h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: var(--text-lighter);
-}
-
-.section {
-    padding: 100px 0;
-}
-
-/* ===== GLASSMORPHISM HEADER ===== */
-header {
-    background: rgba(10, 17, 40, 0.8);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--glass-border);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 0;
-}
-
-.logo a {
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.logo img {
-    height: 48px;
-    width: auto;
-    filter: brightness(0) invert(1);
-    transition: transform var(--transition-default);
-}
-
-.logo img:hover {
-    transform: scale(1.05);
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo-text {
-    font-size: 1.5rem;
-    font-weight: 800;
-    background: linear-gradient(135deg, var(--text-lighter) 0%, var(--accent-blue) 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    letter-spacing: -0.5px;
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--accent-dark);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.logo-text:hover {
+  color: var(--accent-bright);
 }
 
 .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
 }
 
 .nav-links a {
-    text-decoration: none;
-    font-weight: 600;
-    color: var(--text-light);
-    transition: color var(--transition-default);
-    font-size: 1rem;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color var(--transition);
+  position: relative;
 }
 
-.nav-links a:hover, .nav-links a.active {
-    color: var(--accent-blue);
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-bright);
+  transition: width var(--transition);
 }
 
-.burger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
+.nav-links a:hover {
+  color: var(--accent-dark);
 }
 
-.burger span {
-    width: 25px;
-    height: 3px;
-    background: var(--text-lighter);
-    margin: 3px 0;
-    transition: var(--transition-default);
-    border-radius: 3px;
+.nav-links a:hover::after {
+  width: 100%;
 }
 
-/* ===== BUTTONS & CARDS ===== */
+/* ===== Герой секция (главная) ===== */
+.hero {
+  padding: 6rem 0 5rem;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(10,37,64,0.03) 0%, rgba(255,255,255,1) 100%);
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  background: var(--gradient);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 6s ease infinite;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  color: var(--text-light);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.btn {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  border-radius: 40px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  border: none;
+  font-size: 1rem;
+}
+
 .btn-primary {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
-    color: white;
-    padding: 14px 32px;
-    border-radius: 40px;
-    text-decoration: none;
-    font-weight: 700;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    border: none;
-    cursor: pointer;
-    letter-spacing: 0.5px;
+  background: var(--gradient);
+  background-size: 200% 200%;
+  color: white;
+  box-shadow: 0 8px 20px rgba(0,163,255,0.25);
+  animation: gradientShift 4s ease infinite;
 }
 
 .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(59,130,246,0.4);
+  background-position: 100% 100%;
+  box-shadow: 0 12px 30px rgba(0,163,255,0.4);
+  transform: translateY(-2px);
+}
+
+/* ===== Карточки с hover-изображением ===== */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 4rem 0;
 }
 
 .card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    border-radius: 24px;
-    padding: 2rem;
-    transition: transform 0.3s ease, background 0.3s ease;
-    border: 1px solid var(--glass-border);
-    height: 100%;
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: white;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-8px);
-    background: rgba(15, 23, 42, 0.8);
-    border-color: var(--accent-blue);
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
 }
 
-.cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
+.card-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.1);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  z-index: 0;
 }
 
-/* ===== BENEFITS & LISTS ===== */
-.benefits-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
+.card:hover .card-bg {
+  opacity: 0.25;
+  transform: scale(1);
 }
 
-.benefit-item {
-    background: var(--glass-bg);
-    backdrop-filter: blur(8px);
-    padding: 1.2rem;
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    font-weight: 600;
-    color: var(--text-lighter);
-    transition: transform var(--transition-default);
+.card-content {
+  position: relative;
+  z-index: 1;
+  background: rgba(255,255,255,0.92);
+  padding: 2.5rem 2rem;
+  transition: background 0.3s ease;
 }
 
-.benefit-item:hover {
-    transform: translateX(5px);
-    background: rgba(59, 130, 246, 0.2);
+.card:hover .card-content {
+  background: rgba(255,255,255,0.75);
 }
 
-.benefit-item::before {
-    content: "✓";
-    background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
-    color: white;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
+.card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+  color: var(--accent-dark);
 }
 
-/* ===== CONTACT FORM ===== */
-.contact-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    margin-top: 2rem;
+.card p {
+  color: var(--text-light);
 }
 
-@media (min-width: 768px) {
-    .contact-wrapper {
-        flex-direction: row;
-    }
-    .contact-info, .contact-form-container {
-        flex: 1;
-    }
+/* ===== Остальные общие секции ===== */
+.section {
+  padding: 5rem 0;
 }
 
-.contact-info, .contact-form-container {
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    border-radius: 24px;
-    padding: 2rem;
-    border: 1px solid var(--glass-border);
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--accent-dark);
 }
 
-.contact-email {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--accent-cyan);
-    text-decoration: none;
-    word-break: break-all;
+.section-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-light);
+  margin-bottom: 3rem;
+}
+
+/* ===== Контактная форма ===== */
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .form-group {
-    margin-bottom: 1.5rem;
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 1rem 0;
+  font-size: 1rem;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  background: transparent;
+  outline: none;
+  transition: border-color var(--transition);
+  color: var(--text);
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-bottom-color: var(--accent-bright);
 }
 
 .form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    color: var(--text-light);
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  color: #999;
+  font-size: 1rem;
 }
 
-.form-group input, .form-group textarea {
-    width: 100%;
-    padding: 12px 16px;
-    background: rgba(0, 0, 0, 0.4);
-    border: 1px solid var(--glass-border);
-    border-radius: 12px;
-    color: var(--text-lighter);
-    font-family: inherit;
-    transition: var(--transition-default);
+.form-group input:focus + label,
+.form-group textarea:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group textarea:not(:placeholder-shown) + label {
+  top: -0.8rem;
+  font-size: 0.8rem;
+  color: var(--accent-bright);
 }
 
-.form-group input:focus, .form-group textarea:focus {
-    outline: none;
-    border-color: var(--accent-blue);
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+/* placeholder должен быть прозрачным, чтобы лейбл работал */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: transparent;
 }
 
-/* ===== FOOTER ===== */
-footer {
-    background: rgba(10, 17, 40, 0.9);
-    backdrop-filter: blur(8px);
-    border-top: 1px solid var(--glass-border);
-    padding: 2rem 0;
-    text-align: center;
-    font-size: 0.9rem;
+.form-group textarea {
+  min-height: 120px;
 }
 
-/* ===== RESPONSIVE ===== */
+.btn-submit {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+}
+
+/* ===== Футер ===== */
+.footer {
+  background: var(--accent-dark);
+  color: rgba(255,255,255,0.8);
+  padding: 2rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.footer a {
+  color: var(--accent-bright);
+  text-decoration: none;
+}
+
+/* ===== Адаптивность ===== */
 @media (max-width: 768px) {
-    .container {
-        padding: 0 20px;
-    }
-    .nav-links {
-        position: fixed;
-        top: 70px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 70px);
-        background: rgba(10, 17, 40, 0.95);
-        backdrop-filter: blur(20px);
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        padding-top: 2rem;
-        gap: 1.5rem;
-        transition: left 0.3s;
-    }
-    .nav-links.active {
-        left: 0;
-    }
-    .burger {
-        display: flex;
-    }
-}
+  .navbar .container {
+    flex-direction: column;
+    gap: 1rem;
+  }
 
-/* Анимация для появления контента */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+  .hero h1 {
+    font-size: 2.5rem;
+  }
 
-.hero, .section {
-    animation: fadeInUp 0.6s ease-out forwards;
+  body::before {
+    width: 50vw;
+    height: 50vw;
+    opacity: 0.04;
+  }
 }
