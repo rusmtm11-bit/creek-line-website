@@ -37,7 +37,7 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* ===== Фоновый логотип-водяной знак ===== */
+/* ===== Фоновый логотип-водяной знак на всём сайте ===== */
 body::before {
   content: "";
   position: fixed;
@@ -126,11 +126,29 @@ body::before {
   width: 100%;
 }
 
-/* ===== Герой секция ===== */
+/* ===== Герой секция с логотипом на фоне ===== */
 .hero {
   padding: 6rem 0 5rem;
   text-align: center;
   background: linear-gradient(180deg, rgba(10,37,64,0.03) 0%, rgba(255,255,255,0) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 600px;
+  height: 80%;
+  background: url('images/logo.jpg') no-repeat center center;
+  background-size: contain;
+  opacity: 0.08;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .hero h1 {
@@ -184,7 +202,7 @@ body::before {
   transform: translateY(-2px);
 }
 
-/* ===== Карточки с hover-изображением ===== */
+/* ===== Карточки с hover-изображением (единый стиль для всех) ===== */
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -203,7 +221,7 @@ body::before {
 
 .card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 15px 40px rgba(0, 163, 255, 0.15); /* голубоватое свечение */
+  box-shadow: 0 15px 40px rgba(0, 163, 255, 0.25);
 }
 
 .card-bg {
@@ -214,7 +232,8 @@ body::before {
   height: 100%;
   background-size: cover;
   background-position: center;
-  background-color: rgba(0, 163, 255, 0.03); /* лёгкий оттенок по умолчанию, если нет картинки */
+  background-repeat: no-repeat;
+  background-color: rgba(0, 163, 255, 0.0);
   opacity: 0;
   transform: scale(1.1);
   transition: opacity 0.5s ease, transform 0.5s ease, background-color 0.3s ease;
@@ -222,9 +241,9 @@ body::before {
 }
 
 .card:hover .card-bg {
-  opacity: 0.45; /* стало заметнее */
+  opacity: 0.5;
   transform: scale(1);
-  background-color: rgba(0, 163, 255, 0.08);
+  background-color: rgba(0, 163, 255, 0.12); /* голубая подсветка, если нет своей картинки */
 }
 
 .card-content {
@@ -236,7 +255,7 @@ body::before {
 }
 
 .card:hover .card-content {
-  background: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.65);
 }
 
 .card h3 {
