@@ -5,6 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Services | Creek Line Limited</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Дополнительные стили для списка продуктов внутри карточек */
+    .product-list {
+      margin-top: 1.2rem;
+      padding-left: 1.2rem;
+      list-style: none;
+    }
+    .product-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+    .product-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent-bright);
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
   <nav class="navbar">
@@ -21,35 +43,48 @@
 
   <section class="section">
     <div class="container">
-      <h2 class="section-title">What We Offer</h2>
-      <p class="section-subtitle">Comprehensive solutions tailored to your project.</p>
+      <h2 class="section-title">Our Services</h2>
+      <p class="section-subtitle">Comprehensive commodity trading and supply solutions.</p>
+
       <div class="cards-grid">
         <div class="card">
-          <div class="card-bg" style="background-image: url('images/hover/construction.jpg');"></div>
+          <div class="card-bg" style="background-image: url('images/hover/oil-gas.jpg');"></div>
           <div class="card-content">
-            <h3>General Contracting</h3>
-            <p>We handle all trades, delivering turnkey projects on time and within budget.</p>
+            <h3>Oil & Gas Trading</h3>
+            <p>Creek Line Limited participates in the international trade and supply of petroleum and energy-related products. Our activities include commercial coordination, sourcing support, procurement operations, and international trade facilitation.</p>
+            <ul class="product-list">
+              <li>Crude Oil</li>
+              <li>Jet Fuel</li>
+              <li>Diesel</li>
+              <li>Fuel Oil</li>
+              <li>Petroleum Products</li>
+            </ul>
           </div>
         </div>
+
         <div class="card">
-          <div class="card-bg" style="background-image: url('images/hover/renovation.jpg');"></div>
+          <div class="card-bg" style="background-image: url('images/hover/metals-minerals.jpg');"></div>
           <div class="card-content">
-            <h3>Renovation & Fit-Out</h3>
-            <p>Transforming existing spaces into modern, functional environments.</p>
+            <h3>Metals & Minerals</h3>
+            <p>The company supports the supply and procurement of industrial metals and mineral commodities for international markets and industrial applications.</p>
+            <ul class="product-list">
+              <li>Copper</li>
+              <li>Aluminum</li>
+              <li>Zinc</li>
+              <li>Iron</li>
+              <li>Steel Products</li>
+              <li>Precious Metals</li>
+              <li>Industrial Metals</li>
+              <li>Raw Materials</li>
+            </ul>
           </div>
         </div>
+
         <div class="card">
-          <div class="card-bg" style="background-image: url('images/hover/infrastructure.jpg');"></div>
+          <div class="card-bg" style="background-image: url('images/hover/logistics.jpg');"></div>
           <div class="card-content">
-            <h3>Infrastructure</h3>
-            <p>Roads, utilities, and heavy civil works built to last.</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-bg" style="background-image: url('images/hover/project-management.jpg');"></div>
-          <div class="card-content">
-            <h3>Project Management</h3>
-            <p>End-to-end oversight ensuring seamless execution from concept to completion.</p>
+            <h3>Logistics & Operations</h3>
+            <p>The company works with logistics and operational partners to support cargo coordination, shipping activities, trade documentation, and international supply chain operations.</p>
           </div>
         </div>
       </div>
@@ -58,7 +93,7 @@
 
   <footer class="footer">
     <div class="container">
-      <p>&copy; 2026 Creek Line Limited. All rights reserved. | <a href="contact.html">Contact us</a></p>
+      <p>&copy; 2026 Creek Line Limited. All rights reserved. | <a href="contact.html">Contact</a></p>
     </div>
   </footer>
 </body>
