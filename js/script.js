@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (burger) {
         burger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            burger.classList.toggle('toggle');
         });
     }
 
@@ -28,4 +27,23 @@ document.addEventListener('DOMContentLoaded', () => {
             link.classList.add('active');
         }
     });
+
+    // Обработка отправки контактной формы
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Собираем данные
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Здесь можно добавить отправку данных на ваш email или в CRM
+            console.log('Form submitted:', data);
+            
+            // Показываем уведомление
+            alert('Thank you for your message! We will get back to you soon.');
+            contactForm.reset();
+        });
+    }
 });
