@@ -449,3 +449,9 @@ body::after {
     grid-column: span 1;
   }
 }
+/* Центрирование двух карточек (Mission/Vision) — отключает принудительную трёхколоночную сетку */
+@media (min-width: 769px) {
+  .cards-grid--centered {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
