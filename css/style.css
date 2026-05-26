@@ -413,3 +413,16 @@ body::after {
     display: none;               /* На мобильных скрываем вращающийся фон */
   }
 }
+/* ===== Центрированный вступительный текст ===== */
+.about-intro {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.about-intro p {
+  margin-bottom: 1.5rem;
+  font-size: 1.15rem;
+  color: var(--text-light);
+  line-height: 1.7;
+}
