@@ -37,7 +37,7 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* ===== Вращающееся фоновое изображение (круглое, скорость увеличена) ===== */
+/* ===== Вращающееся фоновое изображение (круглое) ===== */
 body::after {
   content: "";
   position: fixed;
@@ -51,7 +51,7 @@ body::after {
   background-size: cover;
   opacity: 0.08;
   z-index: -1;
-  animation: spin 50s linear infinite;  /* Было 80s, стало 50s — вращение быстрее */
+  animation: spin 50s linear infinite;
   pointer-events: none;
 }
 
@@ -231,6 +231,13 @@ body::after {
   margin: 4rem 0;
 }
 
+/* Для десктопа фиксируем 3 колонки, чтобы широкий блок работал */
+@media (min-width: 769px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 .card {
   position: relative;
   border-radius: var(--radius);
@@ -243,6 +250,11 @@ body::after {
 .card:hover {
   transform: translateY(-8px);
   box-shadow: 0 15px 40px rgba(0, 163, 255, 0.25);
+}
+
+/* Широкая карточка для блока на всю ширину */
+.card--wide {
+  grid-column: span 3;
 }
 
 .card-bg {
@@ -388,6 +400,20 @@ body::after {
   text-decoration: none;
 }
 
+/* ===== Центрированный вступительный текст ===== */
+.about-intro {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.about-intro p {
+  margin-bottom: 1.5rem;
+  font-size: 1.15rem;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
 /* ===== Центрирование карточек в сетке (для блоков с малым количеством элементов) ===== */
 .cards-grid--centered {
   justify-content: center;
@@ -412,17 +438,14 @@ body::after {
   body::after {
     display: none;               /* На мобильных скрываем вращающийся фон */
   }
-}
-/* ===== Центрированный вступительный текст ===== */
-.about-intro {
-  max-width: 800px;
-  margin: 0 auto 3rem;
-  text-align: center;
-}
 
-.about-intro p {
-  margin-bottom: 1.5rem;
-  font-size: 1.15rem;
-  color: var(--text-light);
-  line-height: 1.7;
+  /* Отменяем фиксированные 3 колонки на мобильных */
+  .cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  /* Широкая карточка на мобильных ведет себя как обычная */
+  .card--wide {
+    grid-column: span 1;
+  }
 }
