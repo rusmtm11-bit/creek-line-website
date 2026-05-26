@@ -388,6 +388,11 @@ body::after {
   text-decoration: none;
 }
 
+/* ===== Центрирование карточек в сетке (для блоков с малым количеством элементов) ===== */
+.cards-grid--centered {
+  justify-content: center;
+}
+
 /* ===== Адаптивность ===== */
 @media (max-width: 768px) {
   .navbar .container {
