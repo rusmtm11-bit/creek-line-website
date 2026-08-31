@@ -13,6 +13,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 CATEGORIES = [
     {
         "slug": "auto-spare-parts",
+        "images": ["https://images.unsplash.com/photo-1498887960847-2a5e46312788?auto=format&fit=crop&w=1200&q=75", "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1200&q=75", "https://images.unsplash.com/photo-1615906655593-ad0386982a0f?auto=format&fit=crop&w=1200&q=75"],
         "nav": "Auto Spare Parts",
         "summary": "OEM and aftermarket components sourced and verified against exact specifications.",
         "banner": "Auto Spare Parts Sourced to Exact Specification",
@@ -28,6 +29,7 @@ CATEGORIES = [
     },
     {
         "slug": "heavy-equipment-machinery",
+        "images": ["https://images.unsplash.com/photo-1603814744174-115311ad645e?auto=format&fit=crop&w=1200&q=75", "https://images.unsplash.com/photo-1580901369227-308f6f40bdeb?auto=format&fit=crop&w=1200&q=75", "https://images.unsplash.com/photo-1523660778745-247ed0bcce31?auto=format&fit=crop&w=1200&q=75"],
         "nav": "Heavy Equipment &amp; Machinery",
         "summary": "Construction, agricultural, and industrial machinery, inspected prior to shipment.",
         "banner": "Heavy Equipment and Machinery, Inspected Prior to Delivery",
@@ -43,6 +45,7 @@ CATEGORIES = [
     },
     {
         "slug": "electronics-it-equipment",
+        "images": ["https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=75", "https://images.unsplash.com/photo-1591238372338-22d30c883a86?auto=format&fit=crop&w=1200&q=75", "https://images.unsplash.com/photo-1512756290469-ec264b7fbf87?auto=format&fit=crop&w=1200&q=75"],
         "nav": "Electronics &amp; IT Equipment",
         "summary": "Computing and networking equipment sourced for corporate and institutional buyers.",
         "banner": "Electronics and IT Equipment Sourced for Corporate Buyers",
@@ -58,6 +61,7 @@ CATEGORIES = [
     },
     {
         "slug": "software-trading",
+        "images": ["https://images.unsplash.com/photo-1695668548342-c0c1ad479aee?auto=format&fit=crop&w=1200&q=75", "https://images.unsplash.com/photo-1580106815433-a5b1d1d53d85?auto=format&fit=crop&w=1200&q=75", "https://images.unsplash.com/photo-1564457461758-8ff96e439e83?auto=format&fit=crop&w=1200&q=75"],
         "nav": "Software Trading",
         "summary": "Licensed enterprise software supplied through authorized vendors and distributors.",
         "banner": "Licensed Software Supplied Through Authorized Channels",
@@ -73,6 +77,7 @@ CATEGORIES = [
     },
     {
         "slug": "textiles",
+        "images": ["https://images.unsplash.com/photo-1593250816874-8edf4f732edb?auto=format&fit=crop&w=1200&q=75", "https://images.unsplash.com/photo-1601056639638-c53c50e13ead?auto=format&fit=crop&w=1200&q=75", "https://images.unsplash.com/photo-1705493253575-e911888621ff?auto=format&fit=crop&w=1200&q=75"],
         "nav": "Textiles",
         "summary": "Fabrics and finished textiles sourced for fashion, home, and industrial applications.",
         "banner": "Textiles Verified Against Approved Samples",
@@ -88,6 +93,7 @@ CATEGORIES = [
     },
     {
         "slug": "household-electronics-equipment",
+        "images": ["https://images.unsplash.com/photo-1570222094114-d054a817e56b?auto=format&fit=crop&w=1200&q=75", "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1200&q=75", "https://images.unsplash.com/photo-1632923565835-6582b54f2105?auto=format&fit=crop&w=1200&q=75"],
         "nav": "Household Electronics &amp; Equipment",
         "summary": "Appliances and equipment sourced for retail and commercial distribution.",
         "banner": "Household Equipment Sourced for Retail and Distribution",
@@ -103,6 +109,7 @@ CATEGORIES = [
     },
     {
         "slug": "food-production-equipment",
+        "images": ["https://images.unsplash.com/photo-1652211955971-7517ff03529d?auto=format&fit=crop&w=1200&q=75", "https://images.unsplash.com/photo-1651525670054-279c154bc3b6?auto=format&fit=crop&w=1200&q=75", "https://images.unsplash.com/photo-1551884170-09fb70a3a2ed?auto=format&fit=crop&w=1200&q=75"],
         "nav": "Food &amp; Food Production Equipment",
         "summary": "Food products and processing equipment sourced with full regulatory documentation.",
         "banner": "Food Products and Production Equipment",
@@ -118,6 +125,7 @@ CATEGORIES = [
     },
     {
         "slug": "chemicals",
+        "images": ["https://images.unsplash.com/photo-1542274368-443d694d79aa?auto=format&fit=crop&w=1200&q=75", "https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=1200&q=75", "https://images.unsplash.com/photo-1511454493857-0a29f2c023c7?auto=format&fit=crop&w=1200&q=75"],
         "nav": "Chemicals",
         "summary": "Industrial, agricultural, and specialty chemicals supplied with complete safety documentation.",
         "banner": "Chemicals Supplied With Complete Documentation",
@@ -284,7 +292,10 @@ def category_cards(cols=4, with_link=True):
     cards = []
     for c in CATEGORIES:
         link = f'\n          <a class="card-link stretched" href="{c["slug"]}.html">Learn more {icon("arrow")}</a>' if with_link else ""
+        photo = c["images"][0]
         cards.append(f'''        <div class="icon-card reveal">
+          <div class="card-photo" style="background-image:url('{photo}')"></div>
+          <div class="card-scrim"></div>
           <div class="icon">{icon(c["icon"])}</div>
           <h3>{c["nav"]}</h3>
           <p>{c["summary"]}</p>{link}
@@ -298,5 +309,11 @@ def cat_nav(current_slug):
         cls = " active" if c["slug"] == current_slug else ""
         links.append(f'<a href="{c["slug"]}.html" class="{cls}">{c["nav"]}</a>'.replace(' class=""', ''))
     return '      <div class="cat-nav">\n        ' + "\n        ".join(links) + "\n      </div>\n"
+
+
+def cat_bg_slides(c):
+    return "\n".join(
+        f'    <div class="bg-slide" style="background-image:url(\'{u}\')"></div>' for u in c["images"]
+    ) + "\n"
 
 print("build.py loaded: run build_all.py to generate pages")

@@ -2,7 +2,7 @@
 import os
 from build import (
     ROOT, CATEGORIES, CAT_BY_SLUG, icon, nav, footer, page, reveal,
-    category_cards, cat_nav,
+    category_cards, cat_nav, cat_bg_slides,
 )
 
 OUT = []
@@ -281,6 +281,8 @@ for c in CATEGORIES:
     related = others[:3]
     related_cards = "\n".join(
         f'''        <div class="icon-card reveal">
+          <div class="card-photo" style="background-image:url('{o["images"][0]}')"></div>
+          <div class="card-scrim"></div>
           <div class="icon">{icon(o["icon"])}</div>
           <h3>{o["nav"]}</h3>
           <p>{o["summary"]}</p>
@@ -289,8 +291,7 @@ for c in CATEGORIES:
     )
 
     body = f'''  <header class="cat-hero">
-    <div class="cat-icon-mark">{icon(c["icon"])}</div>
-    <div class="container reveal">
+{cat_bg_slides(c)}    <div class="container reveal">
       <div class="breadcrumb"><a href="index.html">Home</a> / <a href="products.html">Products &amp; Services</a> / {c["nav"]}</div>
       <h1 style="max-width:760px">{c["banner"]}</h1>
     </div>
