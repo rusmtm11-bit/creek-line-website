@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request a Quote | Creek Line Limited</title>
+  <meta name="description" content="Submit your procurement requirements to Creek Line Limited for a formal quotation.">
+  <link rel="canonical" href="https://creek-line.com/quote.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <div class="topbar">
+    <div class="container">
+      <span>Global Procurement and Sourcing &mdash; Hong Kong</span>
+      <div class="topbar-links">
+        <a href="mailto:info@creek-line.com">info@creek-line.com</a>
+      </div>
+    </div>
+  </div>
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo-text"><img src="images/logo.jpg" alt="Creek Line Limited"> Creek Line Limited</a>
+      <button class="burger" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+      <ul class="nav-links">
+        <li><a href="index.html" >Home</a></li>
+        <li><a href="about.html" >About</a></li>
+        <li class="has-dropdown">
+          <a href="products.html" class=" active">Products &amp; Services <span class="chevron"></span></a>
+          <div class="dropdown">
+<a href="auto-spare-parts.html">Auto Spare Parts</a>
+<a href="heavy-equipment-machinery.html">Heavy Equipment &amp; Machinery</a>
+<a href="electronics-it-equipment.html">Electronics &amp; IT Equipment</a>
+<a href="software-trading.html">Software Trading</a>
+<a href="textiles.html">Textiles</a>
+<a href="household-electronics-equipment.html">Household Electronics &amp; Equipment</a>
+<a href="food-production-equipment.html">Food &amp; Food Production Equipment</a>
+<a href="chemicals.html">Chemicals</a>
+            <div class="dropdown-foot"><a href="products.html">View all categories &rarr;</a></div>
+          </div>
+        </li>
+        <li><a href="process.html" >Procurement Process</a></li>
+        <li><a href="suppliers.html" >Supplier Network</a></li>
+        <li><a href="contact.html" >Contact</a></li>
+        <li><a href="quote.html" class="nav-cta">Request a Quote</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="page-hero">
+    <div class="container reveal">
+      <div class="breadcrumb"><a href="index.html">Home</a> / Request a Quote</div>
+      <h1>Request a Quote</h1>
+      <p class="lede">Submit your requirements using the form below. Our team will review the request and respond within one business day.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container container--narrow">
+      <div class="form-card reveal">
+        <form id="quoteForm" data-form="quote" action="https://formsubmit.co/info@creek-line.com" method="POST" enctype="multipart/form-data">
+          <input type="hidden" name="_subject" value="New quote request &ndash; Creek Line Limited website">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="thankyou.html">
+
+          <div class="form-grid">
+            <div class="form-group full">
+              <label class="static" for="category">Category</label>
+              <select id="category" name="category" required>
+                <option value="">Select a category&hellip;</option>
+              <option value="Auto Spare Parts">Auto Spare Parts</option>
+              <option value="Heavy Equipment & Machinery">Heavy Equipment & Machinery</option>
+              <option value="Electronics & IT Equipment">Electronics & IT Equipment</option>
+              <option value="Software Trading">Software Trading</option>
+              <option value="Textiles">Textiles</option>
+              <option value="Household Electronics & Equipment">Household Electronics & Equipment</option>
+              <option value="Food & Food Production Equipment">Food & Food Production Equipment</option>
+              <option value="Chemicals">Chemicals</option>
+              <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group full">
+              <label class="static" for="details">Product / Service Details</label>
+              <textarea id="details" name="product_service_details" required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="static" for="quantity">Quantity</label>
+              <input type="text" id="quantity" name="quantity" required>
+            </div>
+
+            <div class="form-group">
+              <label class="static" for="location">Delivery Location</label>
+              <input type="text" id="location" name="delivery_location" required>
+            </div>
+
+            <div class="form-group full">
+              <label class="static" for="specs">Specifications or Requirements</label>
+              <textarea id="specs" name="specifications_or_requirements"></textarea>
+            </div>
+
+            <div class="form-group full">
+              <label class="static" for="attachment">Attachment</label>
+              <input type="file" id="attachment" name="attachment">
+              <div class="form-hint">Specification sheet, drawing, or reference document. Accepted formats: PDF, JPG, PNG, DOCX, XLSX. Maximum file size: 10MB.</div>
+            </div>
+
+            <div class="form-group">
+              <label class="static" for="name">Full Name</label>
+              <input type="text" id="name" name="full_name" required>
+            </div>
+
+            <div class="form-group">
+              <label class="static" for="company">Company Name</label>
+              <input type="text" id="company" name="company_name" required>
+            </div>
+
+            <div class="form-group">
+              <label class="static" for="email">Email Address</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+              <label class="static" for="phone">Phone Number (with country code)</label>
+              <input type="tel" id="phone" name="phone_number" placeholder="+1 000 000 0000" required>
+            </div>
+          </div>
+
+          <div class="consent-group">
+            <input type="checkbox" id="consent" name="consent" value="yes" required>
+            <label for="consent">I agree to the processing of my personal data in accordance with the applicable law.</label>
+          </div>
+          <div class="consent-error">Please confirm your consent to the processing of personal data before sending the request.</div>
+
+          <button type="submit" class="btn btn-primary btn-submit">Submit Request</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var cat = params.get('category');
+      if (cat) {
+        var select = document.getElementById('category');
+        for (var i = 0; i < select.options.length; i++) {
+          if (select.options[i].value.toLowerCase().replace(/[^a-z]+/g, '-').indexOf(cat.toLowerCase()) !== -1 ||
+              cat.toLowerCase().indexOf(select.options[i].value.toLowerCase().replace(/&/g, 'and').replace(/[^a-z]+/g, '-')) !== -1) {
+            select.selectedIndex = i;
+          }
+        }
+      }
+    })();
+  </script>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">Creek Line Limited</div>
+          <p>A procurement and trading company managing sourcing, quality verification, and logistics across eight core categories, connecting buyers worldwide with verified manufacturers.</p>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="process.html">Procurement Process</a></li>
+            <li><a href="suppliers.html">Supplier Network</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Categories</h4>
+          <ul>
+<li><a href="auto-spare-parts.html">Auto Spare Parts</a></li>
+<li><a href="heavy-equipment-machinery.html">Heavy Equipment &amp; Machinery</a></li>
+<li><a href="electronics-it-equipment.html">Electronics &amp; IT Equipment</a></li>
+<li><a href="software-trading.html">Software Trading</a></li>
+<li><a href="textiles.html">Textiles</a></li>
+<li><a href="household-electronics-equipment.html">Household Electronics &amp; Equipment</a></li>
+            <li><a href="products.html">View all &rarr;</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:info@creek-line.com">info@creek-line.com</a></li>
+            <li>RM A08 Unit F3, 2/F, Koon Wo Industrial Building,<br>Nos. 63&ndash;75 Ta Chuen Ping Street,<br>Kwai Chung, New Territories, Hong Kong</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Creek Line Limited. All rights reserved.</span>
+        <span><a href="quote.html">Request a Quote</a></span>
+      </div>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
