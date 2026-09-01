@@ -50,7 +50,7 @@ home_body = f'''  <header class="hero">
   <section class="section section-alt">
     <div class="container">
       <div class="section-head center reveal">
-        <h2 class="section-title">Eight Core Sourcing Categories</h2>
+        <h2 class="section-title">Core Sourcing Categories</h2>
         <p class="section-subtitle">Each category is managed by team members with direct experience in the relevant industry standards and buyer requirements.</p>
       </div>
       <div class="stagger">
@@ -102,7 +102,7 @@ home_body = f'''  <header class="hero">
   <section class="stat-strip section-alt">
     <div class="container">
       <div class="stat-grid">
-        <div class="stat reveal"><div class="num"><span data-count="8">0</span></div><div class="label">Core Sourcing Categories</div></div>
+        <div class="stat reveal"><div class="num"><span data-count="6">0</span></div><div class="label">Core Sourcing Categories</div></div>
         <div class="stat reveal" style="--reveal-delay:0.1s"><div class="num"><span data-count="1">0</span> Day</div><div class="label">Standard Enquiry Response Time</div></div>
         <div class="stat reveal" style="--reveal-delay:0.2s"><div class="num"><span data-count="6">0</span></div><div class="label">Stage Procurement Process</div></div>
         <div class="stat reveal" style="--reveal-delay:0.3s"><div class="num"><span data-count="100" data-suffix="%">0%</span></div><div class="label">Orders Pre-Shipment Verified</div></div>
@@ -157,7 +157,7 @@ about_body = f'''  <header class="page-hero">
         <div>
           <h2>Our Story</h2>
           <p>Creek Line Limited was established to address a specific challenge faced by businesses sourcing internationally: identifying manufacturers capable of meeting exact specifications reliably and at a fair price.</p>
-          <p>Since then, the company has expanded from a limited number of categories into eight core areas &mdash; automotive parts, heavy machinery, electronics, software licensing, textiles, household goods, food and food production equipment, and industrial chemicals &mdash; supported by manufacturing relationships across multiple regions.</p>
+          <p>Since then, the company has expanded from a limited number of categories into core areas &mdash; automotive parts, heavy machinery, electronics, software licensing, textiles, and household goods &mdash; supported by manufacturing relationships across multiple regions.</p>
           <p>Our approach has remained consistent throughout this expansion: assess the client&rsquo;s requirement thoroughly, identify a manufacturer capable of meeting it, and manage the process through to delivery.</p>
         </div>
         <div class="panel">
@@ -228,7 +228,7 @@ about_body = f'''  <header class="page-hero">
 write("about.html", page(
     active="about",
     title="About Creek Line Limited",
-    description="Creek Line Limited is a procurement company serving clients across eight industries through verified manufacturing partnerships worldwide.",
+    description="Creek Line Limited is a procurement company serving clients across multiple industries through verified manufacturing partnerships worldwide.",
     canonical="about.html",
     body=about_body,
 ))
@@ -240,7 +240,7 @@ products_body = f'''  <header class="page-hero">
     <div class="container reveal">
       <div class="breadcrumb"><a href="index.html">Home</a> / Products &amp; Services</div>
       <h1>Products and Services</h1>
-      <p class="lede">Creek Line Limited sources across eight core categories. Each category is managed by team members with direct experience in the relevant industry standards and buyer requirements.</p>
+      <p class="lede">Creek Line Limited sources across core categories. Each category is managed by team members with direct experience in the relevant industry standards and buyer requirements.</p>
     </div>
   </header>
 
@@ -267,7 +267,7 @@ products_body = f'''  <header class="page-hero">
 write("products.html", page(
     active="products",
     title="Products and Services | Creek Line Limited",
-    description="Creek Line Limited sources across eight product categories, including auto parts, machinery, electronics, textiles, and chemicals.",
+    description="Creek Line Limited sources across core product categories, including auto parts, machinery, electronics, textiles, and household equipment.",
     canonical="products.html",
     body=products_body,
 ))

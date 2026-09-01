@@ -107,38 +107,6 @@ CATEGORIES = [
         "cta_button": "Request a Household Equipment Quote",
         "icon": "appliance",
     },
-    {
-        "slug": "food-production-equipment",
-        "images": ["https://images.unsplash.com/photo-1652211955971-7517ff03529d?auto=format&fit=crop&w=1200&q=75", "https://images.unsplash.com/photo-1651525670054-279c154bc3b6?auto=format&fit=crop&w=1200&q=75", "https://images.unsplash.com/photo-1551884170-09fb70a3a2ed?auto=format&fit=crop&w=1200&q=75"],
-        "nav": "Food &amp; Food Production Equipment",
-        "summary": "Food products and processing equipment sourced with full regulatory documentation.",
-        "banner": "Food Products and Production Equipment",
-        "title_tag": "Food &amp; Food Production Equipment",
-        "overview": "Creek Line Limited sources both food products and the equipment used to process and package them. All orders in this category are supported by the certifications and safety documentation required for import and resale in the relevant market.",
-        "extra": [
-            "Certifications and safety documentation are confirmed prior to order placement.",
-            "Product and equipment sourcing can be managed within a single engagement where both are required.",
-        ],
-        "cta_line": "Tell us about the products or equipment you need.",
-        "cta_button": "Request a Food Sector Quote",
-        "icon": "food",
-    },
-    {
-        "slug": "chemicals",
-        "images": ["https://images.unsplash.com/photo-1542274368-443d694d79aa?auto=format&fit=crop&w=1200&q=75", "https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=1200&q=75", "https://images.unsplash.com/photo-1511454493857-0a29f2c023c7?auto=format&fit=crop&w=1200&q=75"],
-        "nav": "Chemicals",
-        "summary": "Industrial, agricultural, and specialty chemicals supplied with complete safety documentation.",
-        "banner": "Chemicals Supplied With Complete Documentation",
-        "title_tag": "Chemicals",
-        "overview": "Creek Line Limited sources industrial, agricultural, and specialty chemicals. Each order is supplied with complete safety data sheets and applicable regulatory documentation.",
-        "extra": [
-            "Documentation is prepared in advance of shipment to support customs clearance.",
-            "Logistics partners are selected on the basis of experience in chemical handling and transport.",
-        ],
-        "cta_line": "Tell us which chemicals or specifications you require.",
-        "cta_button": "Request a Chemicals Quote",
-        "icon": "flask",
-    },
 ]
 
 CAT_BY_SLUG = {c["slug"]: c for c in CATEGORIES}
@@ -220,7 +188,7 @@ def footer():
       <div class="footer-grid">
         <div>
           <div class="footer-brand">Creek Line Limited</div>
-          <p>A procurement and trading company managing sourcing, quality verification, and logistics across eight core categories, connecting buyers worldwide with verified manufacturers.</p>
+          <p>A procurement and trading company managing sourcing, quality verification, and logistics across core categories, connecting buyers worldwide with verified manufacturers.</p>
         </div>
         <div>
           <h4>Company</h4>
