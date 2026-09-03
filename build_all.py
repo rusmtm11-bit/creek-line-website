@@ -2,13 +2,14 @@
 import os
 from build import (
     ROOT, CATEGORIES, CAT_BY_SLUG, icon, nav, footer, page, reveal,
-    category_cards, cat_nav, cat_bg_slides,
+    category_cards, cat_nav, cat_bg_slides, redirect_stub,
 )
 
 OUT = []
 
 def write(path, content):
     full = os.path.join(ROOT, path)
+    os.makedirs(os.path.dirname(full), exist_ok=True)
     with open(full, "w", encoding="utf-8") as f:
         f.write(content)
     OUT.append(path)
@@ -25,12 +26,12 @@ home_body = f'''  <header class="hero">
         <h1>Procurement Built on Verified Manufacturing Relationships</h1>
         <p class="lede">Creek Line Limited manages procurement across industries, working directly with manufacturers on multiple continents to ensure that products meet exact specifications.</p>
         <div class="hero-actions">
-          <a href="quote.html" class="btn btn-primary">Request a Quote {icon("arrow")}</a>
-          <a href="products.html" class="btn btn-outline">Explore Categories</a>
+          <a href="/quote/" class="btn btn-primary">Request a Quote {icon("arrow")}</a>
+          <a href="/products/" class="btn btn-outline">Explore Categories</a>
         </div>
       </div>
       <div class="hero-visual reveal" style="--reveal-delay:0.15s">
-        <img src="images/logo.jpg" alt="Creek Line Limited">
+        <img src="/images/logo.jpg" alt="Creek Line Limited">
       </div>
     </div>
   </header>
@@ -56,7 +57,7 @@ home_body = f'''  <header class="hero">
       <div class="stagger">
 {category_cards()}      </div>
       <div style="text-align:center;margin-top:1rem" class="reveal">
-        <a href="products.html" class="btn btn-outline">View All Products &amp; Services {icon("arrow")}</a>
+        <a href="/products/" class="btn btn-outline">View All Products &amp; Services {icon("arrow")}</a>
       </div>
     </div>
   </section>
@@ -93,7 +94,7 @@ home_body = f'''  <header class="hero">
         <div class="panel">
           <h3>Our procurement process is structured and documented at every stage.</h3>
           <p style="color:var(--text-light);margin-bottom:1.5rem">From enquiry to delivery, every order follows the same six-stage process, so clients know exactly what to expect at each point.</p>
-          <a href="process.html" class="btn btn-outline">See the Full Process {icon("arrow")}</a>
+          <a href="/process/" class="btn btn-outline">See the Full Process {icon("arrow")}</a>
         </div>
       </div>
     </div>
@@ -126,7 +127,7 @@ home_body = f'''  <header class="hero">
           <h2>Submit your procurement requirements.</h2>
           <p>Our team will respond within one business day.</p>
         </div>
-        <a href="quote.html" class="btn btn-primary">Request a Quote {icon("arrow")}</a>
+        <a href="/quote/" class="btn btn-primary">Request a Quote {icon("arrow")}</a>
       </div>
     </div>
   </section>
@@ -145,7 +146,7 @@ write("index.html", page(
 # ===========================================================================
 about_body = f'''  <header class="page-hero">
     <div class="container reveal">
-      <div class="breadcrumb"><a href="index.html">Home</a> / About</div>
+      <div class="breadcrumb"><a href="/">Home</a> / About</div>
       <h1>About Creek Line Limited</h1>
       <p class="lede">A procurement company built on verified manufacturing relationships.</p>
     </div>
@@ -219,17 +220,17 @@ about_body = f'''  <header class="page-hero">
           <h2>Work with a procurement partner that documents every stage.</h2>
           <p>Get in touch to discuss your sourcing requirements.</p>
         </div>
-        <a href="contact.html" class="btn btn-primary">Contact Us {icon("arrow")}</a>
+        <a href="/contact/" class="btn btn-primary">Contact Us {icon("arrow")}</a>
       </div>
     </div>
   </section>
 '''
 
-write("about.html", page(
+write("about/index.html", page(
     active="about",
     title="About Creek Line Limited",
     description="Creek Line Limited is a procurement company serving clients across multiple industries through verified manufacturing partnerships worldwide.",
-    canonical="about.html",
+    canonical="about/",
     body=about_body,
 ))
 
@@ -238,7 +239,7 @@ write("about.html", page(
 # ===========================================================================
 products_body = f'''  <header class="page-hero">
     <div class="container reveal">
-      <div class="breadcrumb"><a href="index.html">Home</a> / Products &amp; Services</div>
+      <div class="breadcrumb"><a href="/">Home</a> / Products &amp; Services</div>
       <h1>Products and Services</h1>
       <p class="lede">Creek Line Limited sources across core categories. Each category is managed by team members with direct experience in the relevant industry standards and buyer requirements.</p>
     </div>
@@ -258,17 +259,17 @@ products_body = f'''  <header class="page-hero">
           <h2>Don&rsquo;t see your category listed?</h2>
           <p>Submit your requirements and our team will confirm whether we can source it.</p>
         </div>
-        <a href="quote.html" class="btn btn-primary">Request a Quote {icon("arrow")}</a>
+        <a href="/quote/" class="btn btn-primary">Request a Quote {icon("arrow")}</a>
       </div>
     </div>
   </section>
 '''
 
-write("products.html", page(
+write("products/index.html", page(
     active="products",
     title="Products and Services | Creek Line Limited",
     description="Creek Line Limited sources across core product categories, including auto parts, machinery, electronics, textiles, and household equipment.",
-    canonical="products.html",
+    canonical="products/",
     body=products_body,
 ))
 
@@ -286,13 +287,13 @@ for c in CATEGORIES:
           <div class="icon">{icon(o["icon"])}</div>
           <h3>{o["nav"]}</h3>
           <p>{o["summary"]}</p>
-          <a class="card-link stretched" href="{o["slug"]}.html">Learn more {icon("arrow")}</a>
+          <a class="card-link stretched" href="/{o["slug"]}/">Learn more {icon("arrow")}</a>
         </div>''' for o in related
     )
 
     body = f'''  <header class="cat-hero">
 {cat_bg_slides(c)}    <div class="container reveal">
-      <div class="breadcrumb"><a href="index.html">Home</a> / <a href="products.html">Products &amp; Services</a> / {c["nav"]}</div>
+      <div class="breadcrumb"><a href="/">Home</a> / <a href="/products/">Products &amp; Services</a> / {c["nav"]}</div>
       <h1 style="max-width:760px">{c["banner"]}</h1>
     </div>
   </header>
@@ -328,7 +329,7 @@ for c in CATEGORIES:
           <h2>{c["cta_line"]}</h2>
           <p>Our team will review the request and respond within one business day.</p>
         </div>
-        <a href="quote.html?category={c["slug"]}" class="btn btn-primary">{c["cta_button"]} {icon("arrow")}</a>
+        <a href="/quote/?category={c["slug"]}" class="btn btn-primary">{c["cta_button"]} {icon("arrow")}</a>
       </div>
     </div>
   </section>
@@ -345,11 +346,11 @@ for c in CATEGORIES:
   </section>
 '''
 
-    write(f"{c['slug']}.html", page(
+    write(f"{c['slug']}/index.html", page(
         active="products",
         title=f"{c['title_tag']} | Creek Line Limited",
         description=c["summary"],
-        canonical=f"{c['slug']}.html",
+        canonical=f"{c['slug']}/",
         body=body,
     ))
 
@@ -374,7 +375,7 @@ step_html = "\n".join(
 
 process_body = f'''  <header class="page-hero">
     <div class="container reveal">
-      <div class="breadcrumb"><a href="index.html">Home</a> / Procurement Process</div>
+      <div class="breadcrumb"><a href="/">Home</a> / Procurement Process</div>
       <h1>Our Procurement Process</h1>
       <p class="lede">The following outlines the standard process applied to orders managed by Creek Line Limited, from initial enquiry through to delivery.</p>
     </div>
@@ -412,17 +413,17 @@ process_body = f'''  <header class="page-hero">
           <h2>Ready to start an enquiry?</h2>
           <p>Submit your requirements and our team will respond within one business day.</p>
         </div>
-        <a href="quote.html" class="btn btn-primary">Request a Quote {icon("arrow")}</a>
+        <a href="/quote/" class="btn btn-primary">Request a Quote {icon("arrow")}</a>
       </div>
     </div>
   </section>
 '''
 
-write("process.html", page(
+write("process/index.html", page(
     active="process",
     title="Procurement Process | Creek Line Limited",
     description="An overview of Creek Line Limited's procurement process, from initial enquiry to delivery.",
-    canonical="process.html",
+    canonical="process/",
     body=process_body,
 ))
 
@@ -431,7 +432,7 @@ write("process.html", page(
 # ===========================================================================
 suppliers_body = f'''  <header class="page-hero">
     <div class="container reveal">
-      <div class="breadcrumb"><a href="index.html">Home</a> / Supplier Network</div>
+      <div class="breadcrumb"><a href="/">Home</a> / Supplier Network</div>
       <h1>Our Supplier Network</h1>
       <p class="lede">Creek Line Limited maintains relationships with manufacturing partners across multiple regions. Each supplier is reviewed prior to inclusion in a client order, and performance is monitored on an ongoing basis thereafter.</p>
     </div>
@@ -468,17 +469,17 @@ suppliers_body = f'''  <header class="page-hero">
           <h2>Looking for a specific manufacturer or region?</h2>
           <p>Tell us your requirement and we will confirm supplier availability.</p>
         </div>
-        <a href="quote.html" class="btn btn-primary">Request a Quote {icon("arrow")}</a>
+        <a href="/quote/" class="btn btn-primary">Request a Quote {icon("arrow")}</a>
       </div>
     </div>
   </section>
 '''
 
-write("suppliers.html", page(
+write("suppliers/index.html", page(
     active="suppliers",
     title="Our Supplier Network | Creek Line Limited",
     description="Creek Line Limited works with a vetted network of manufacturing partners across multiple regions.",
-    canonical="suppliers.html",
+    canonical="suppliers/",
     body=suppliers_body,
 ))
 
@@ -491,7 +492,7 @@ category_options = "\n".join(
 
 quote_body = f'''  <header class="page-hero">
     <div class="container reveal">
-      <div class="breadcrumb"><a href="index.html">Home</a> / Request a Quote</div>
+      <div class="breadcrumb"><a href="/">Home</a> / Request a Quote</div>
       <h1>Request a Quote</h1>
       <p class="lede">Submit your requirements using the form below. Our team will review the request and respond within one business day.</p>
     </div>
@@ -504,7 +505,7 @@ quote_body = f'''  <header class="page-hero">
           <input type="hidden" name="_subject" value="New quote request &ndash; Creek Line Limited website">
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_next" value="thankyou.html">
+          <input type="hidden" name="_next" value="https://creek-line.com/thankyou/">
 
           <div class="form-grid">
             <div class="form-group full">
@@ -592,11 +593,11 @@ quote_body = f'''  <header class="page-hero">
   </script>
 '''
 
-write("quote.html", page(
+write("quote/index.html", page(
     active="products",
     title="Request a Quote | Creek Line Limited",
     description="Submit your procurement requirements to Creek Line Limited for a formal quotation.",
-    canonical="quote.html",
+    canonical="quote/",
     body=quote_body,
 ))
 
@@ -605,7 +606,7 @@ write("quote.html", page(
 # ===========================================================================
 contact_body = f'''  <header class="page-hero">
     <div class="container reveal">
-      <div class="breadcrumb"><a href="index.html">Home</a> / Contact</div>
+      <div class="breadcrumb"><a href="/">Home</a> / Contact</div>
       <h1>Contact Us</h1>
       <p class="lede">For procurement enquiries or general questions, please contact us using the details below.</p>
     </div>
@@ -634,7 +635,7 @@ contact_body = f'''  <header class="page-hero">
             <input type="hidden" name="_subject" value="New contact form message &ndash; Creek Line Limited website">
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_next" value="thankyou.html">
+            <input type="hidden" name="_next" value="https://creek-line.com/thankyou/">
 
             <div class="form-group">
               <label class="static" for="c_name">Full Name</label>
@@ -667,11 +668,11 @@ contact_body = f'''  <header class="page-hero">
   </section>
 '''
 
-write("contact.html", page(
+write("contact/index.html", page(
     active="contact",
     title="Contact | Creek Line Limited",
     description="Contact details for Creek Line Limited.",
-    canonical="contact.html",
+    canonical="contact/",
     body=contact_body,
 ))
 
@@ -683,18 +684,39 @@ thankyou_body = f'''  <section class="section">
       <div class="thankyou-icon">{CHECK}</div>
       <h1 class="thankyou-title">Thank You</h1>
       <p class="thankyou-message">Your request has been received and will be reviewed by our team within one business day.</p>
-      <a href="index.html" class="btn btn-primary">Return to Home {icon("arrow")}</a>
+      <a href="/" class="btn btn-primary">Return to Home {icon("arrow")}</a>
     </div>
   </section>
 '''
 
-write("thankyou.html", page(
+write("thankyou/index.html", page(
     active="",
     title="Thank You | Creek Line Limited",
     description="Thank you for contacting Creek Line Limited.",
-    canonical="thankyou.html",
+    canonical="thankyou/",
     body=thankyou_body,
 ))
+
+# ===========================================================================
+# REDIRECT STUBS for the old flat *.html URLs (already indexed/crawled by
+# Google) -> the new clean folder-style URLs. Also retires the legacy
+# services.html permanently into /products/.
+# ===========================================================================
+REDIRECTS = {
+    "about.html": "/about/",
+    "products.html": "/products/",
+    "process.html": "/process/",
+    "suppliers.html": "/suppliers/",
+    "quote.html": "/quote/",
+    "contact.html": "/contact/",
+    "thankyou.html": "/thankyou/",
+    "services.html": "/products/",
+}
+for c in CATEGORIES:
+    REDIRECTS[f"{c['slug']}.html"] = f"/{c['slug']}/"
+
+for old_path, new_path in REDIRECTS.items():
+    write(old_path, redirect_stub(new_path))
 
 print(f"Generated {len(OUT)} pages:")
 for p in OUT:

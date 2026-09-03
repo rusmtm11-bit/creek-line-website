@@ -143,7 +143,7 @@ def icon(name):
 
 def nav(active=""):
     dropdown_items = "\n".join(
-        f'<a href="{c["slug"]}.html">{c["nav"]}</a>' for c in CATEGORIES
+        f'<a href="/{c["slug"]}/">{c["nav"]}</a>' for c in CATEGORIES
     )
     def cls(key):
         return " active" if active == key else ""
@@ -157,22 +157,22 @@ def nav(active=""):
   </div>
   <nav class="navbar">
     <div class="container">
-      <a href="index.html" class="logo-text"><img src="images/logo.jpg" alt="Creek Line Limited"> Creek Line Limited</a>
+      <a href="/" class="logo-text"><img src="/images/logo.jpg" alt="Creek Line Limited"> Creek Line Limited</a>
       <button class="burger" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
       <ul class="nav-links">
-        <li><a href="index.html" class="{cls('home')}">Home</a></li>
-        <li><a href="about.html" class="{cls('about')}">About</a></li>
+        <li><a href="/" class="{cls('home')}">Home</a></li>
+        <li><a href="/about/" class="{cls('about')}">About</a></li>
         <li class="has-dropdown">
-          <a href="products.html" class="{cls('products')}">Products &amp; Services <span class="chevron"></span></a>
+          <a href="/products/" class="{cls('products')}">Products &amp; Services <span class="chevron"></span></a>
           <div class="dropdown">
 {dropdown_items}
-            <div class="dropdown-foot"><a href="products.html">View all categories &rarr;</a></div>
+            <div class="dropdown-foot"><a href="/products/">View all categories &rarr;</a></div>
           </div>
         </li>
-        <li><a href="process.html" class="{cls('process')}">Procurement Process</a></li>
-        <li><a href="suppliers.html" class="{cls('suppliers')}">Supplier Network</a></li>
-        <li><a href="contact.html" class="{cls('contact')}">Contact</a></li>
-        <li><a href="quote.html" class="nav-cta">Request a Quote</a></li>
+        <li><a href="/process/" class="{cls('process')}">Procurement Process</a></li>
+        <li><a href="/suppliers/" class="{cls('suppliers')}">Supplier Network</a></li>
+        <li><a href="/contact/" class="{cls('contact')}">Contact</a></li>
+        <li><a href="/quote/" class="nav-cta">Request a Quote</a></li>
       </ul>
     </div>
   </nav>
@@ -181,7 +181,7 @@ def nav(active=""):
 
 def footer():
     cat_links = "\n".join(
-        f'<li><a href="{c["slug"]}.html">{c["nav"]}</a></li>' for c in CATEGORIES[:6]
+        f'<li><a href="/{c["slug"]}/">{c["nav"]}</a></li>' for c in CATEGORIES[:6]
     )
     return f'''  <footer class="footer">
     <div class="container">
@@ -193,17 +193,17 @@ def footer():
         <div>
           <h4>Company</h4>
           <ul>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="process.html">Procurement Process</a></li>
-            <li><a href="suppliers.html">Supplier Network</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="/about/">About Us</a></li>
+            <li><a href="/process/">Procurement Process</a></li>
+            <li><a href="/suppliers/">Supplier Network</a></li>
+            <li><a href="/contact/">Contact</a></li>
           </ul>
         </div>
         <div>
           <h4>Categories</h4>
           <ul>
 {cat_links}
-            <li><a href="products.html">View all &rarr;</a></li>
+            <li><a href="/products/">View all &rarr;</a></li>
           </ul>
         </div>
         <div>
@@ -216,11 +216,11 @@ def footer():
       </div>
       <div class="footer-bottom">
         <span>&copy; 2026 Creek Line Limited. All rights reserved.</span>
-        <span><a href="quote.html">Request a Quote</a></span>
+        <span><a href="/quote/">Request a Quote</a></span>
       </div>
     </div>
   </footer>
-  <script src="js/main.js"></script>
+  <script src="/js/main.js"></script>
 '''
 
 
@@ -237,8 +237,8 @@ def page(*, active, title, description, canonical, body, extra_head="", body_cla
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
 {extra_head}</head>
 <body{body_class_attr}>
 {nav(active)}
@@ -259,7 +259,7 @@ def reveal(html, extra_class=""):
 def category_cards(cols=4, with_link=True):
     cards = []
     for c in CATEGORIES:
-        link = f'\n          <a class="card-link stretched" href="{c["slug"]}.html">Learn more {icon("arrow")}</a>' if with_link else ""
+        link = f'\n          <a class="card-link stretched" href="/{c["slug"]}/">Learn more {icon("arrow")}</a>' if with_link else ""
         photo = c["images"][0]
         cards.append(f'''        <div class="icon-card reveal">
           <div class="card-photo" style="background-image:url('{photo}')"></div>
@@ -275,7 +275,7 @@ def cat_nav(current_slug):
     links = []
     for c in CATEGORIES:
         cls = " active" if c["slug"] == current_slug else ""
-        links.append(f'<a href="{c["slug"]}.html" class="{cls}">{c["nav"]}</a>'.replace(' class=""', ''))
+        links.append(f'<a href="/{c["slug"]}/" class="{cls}">{c["nav"]}</a>'.replace(' class=""', ''))
     return '      <div class="cat-nav">\n        ' + "\n        ".join(links) + "\n      </div>\n"
 
 
@@ -283,5 +283,25 @@ def cat_bg_slides(c):
     return "\n".join(
         f'    <div class="bg-slide" style="background-image:url(\'{u}\')"></div>' for u in c["images"]
     ) + "\n"
+
+
+def redirect_stub(new_path):
+    """A minimal page for an old flat *.html URL, sending both users and
+    search engines to the new clean (trailing-slash) URL."""
+    target = f"https://creek-line.com{new_path}"
+    return f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0; url={target}">
+  <link rel="canonical" href="{target}">
+  <meta name="robots" content="noindex">
+  <title>Creek Line Limited</title>
+</head>
+<body>
+  <p>This page has moved to <a href="{target}">{target}</a>.</p>
+</body>
+</html>
+'''
 
 print("build.py loaded: run build_all.py to generate pages")
